@@ -1,0 +1,359 @@
+/* File: src/components/profile/ProfileView.css */
+
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Section */
+.profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #f0f2f5;
+}
+
+.profile-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.profile-basic-info {
+  flex: 1;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 8px;
+}
+
+.profile-title {
+  margin: 0;
+  font-size: 20px;
+  color: #4a5568;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.profile-affiliation {
+  margin: 0;
+  font-size: 16px;
+  color: #718096;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.h-index-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e6f3ff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #b3d9ff;
+}
+
+.h-index-label {
+  font-size: 14px;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.h-index-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2b6cb0;
+}
+
+.profile-visibility {
+  flex-shrink: 0;
+}
+
+.visibility-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.visibility-badge.public {
+  background: #e6fffa;
+  color: #047857;
+  border: 1px solid #6ee7b7;
+}
+
+.visibility-badge.private {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+/* Content Grid */
+.profile-content {
+  display: grid;
+  gap: 28px;
+}
+
+.profile-section {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.section-icon {
+  font-size: 22px;
+}
+
+/* Research Interests Tags */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.research-tag {
+  background: #e6f3ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.research-tag:hover {
+  background: #bfdbfe;
+  transform: translateY(-1px);
+}
+
+/* Awards */
+.awards-list {
+  display: grid;
+  gap: 12px;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #c9830b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.award-item:hover {
+  background: #fefdf7;
+  box-shadow: 0 4px 12px rgba(201, 131, 11, 0.2);
+  transform: translateY(-2px);
+  border-left: 4px solid #f59e0b;
+}
+
+.award-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.award-item:hover .award-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.award-text {
+  font-size: 15px;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.award-item:hover .award-text {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Social Links */
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.link-icon {
+  font-size: 20px;
+}
+
+/* Icon images styling */
+.link-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Platform-specific adjustments */
+.orcid-link .link-icon-img {
+  border-radius: 50%; /* ORCID is typically circular */
+}
+
+.github-link .link-icon-img {
+  border-radius: 50%; /* GitHub logo looks good circular */
+}
+
+.linkedin-link .link-icon-img {
+  border-radius: 2px; /* LinkedIn is typically square with slight rounding */
+}
+
+.scholar-link .link-icon-img {
+  border-radius: 50%; /* Google Scholar circular */
+}
+
+.orcid-link {
+  color: #729414;
+  border-color: #a6ce39;
+}
+
+.orcid-link:hover {
+  background: #f7faee;
+}
+
+.scholar-link {
+  color: #1048a2;
+  border-color: #4285f4;
+}
+
+.scholar-link:hover {
+  background: #f0f7ff;
+}
+
+.linkedin-link {
+  color: #036da5;
+  border-color: #0077b5;
+}
+
+.linkedin-link:hover {
+  background: #e6f3ff;
+}
+
+.github-link {
+  color: #333;
+  border-color: #333;
+}
+
+.github-link:hover {
+  background: #f6f8fa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-container {
+    margin: 12px;
+    padding: 20px;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .profile-name {
+    font-size: 28px;
+  }
+  
+  .profile-title {
+    font-size: 18px;
+  }
+  
+  .social-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .tags-container {
+    justify-content: center;
+  }
+}
+
+/* Add these styles to your existing ProfileView.css */
+
+/* Profile picture styling */
+.profile-avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #667eea;
+}
+
+/* Private profile message */
+.private-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.private-text {
+  color: #7f1d1d;
+  font-style: italic;
+  margin: 0;
+}
