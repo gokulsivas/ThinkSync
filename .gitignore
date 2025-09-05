@@ -1,0 +1,12 @@
+# Ignore Python virtual environment
+backend/venv/
+
+# Ignore node_modules
+frontend/node_modules/
+
+# Ignore local git folders inside subfolders
+frontend/.git/
+
+# Ignore other system files
+*.log
+__pycache__/
