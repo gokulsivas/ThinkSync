@@ -21,16 +21,22 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: transparent;
 }
 
 .main-content {
   flex: 1;
-  padding: 24px 16px;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  background: transparent;
+  padding-top: 70px; /* Adjust based on your navbar height */
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: calc(100vh - 70px);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  /* Your existing navbar styles */
 }
 
 /* Link styles */
