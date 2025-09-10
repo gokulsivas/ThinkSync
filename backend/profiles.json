@@ -1,0 +1,30 @@
+{
+  "user-123": {
+    "id": "user-123",
+    "name": "dagav",
+    "title": "Researcher",
+    "affiliation": "IIT ",
+    "hIndex": 1,
+    "researchInterests": [
+      "AI",
+      "Machine Learning",
+      "Geography",
+      "Cambodian Pirate Dodging"
+    ],
+    "awards": [
+      "Best Paper 2023",
+      "Padma Shri",
+      "New award",
+      "bones award",
+      "Panjumuttaai"
+    ],
+    "publications": [],
+    "socialLinks": {
+      "orcid": "orcid.org",
+      "googleScholar": "scholar.google.com",
+      "linkedIn": "www.linkedin.com/in/gokulsivas",
+      "github": "https://github.com/gokulsivas"
+    },
+    "isPublic": true
+  }
+}
