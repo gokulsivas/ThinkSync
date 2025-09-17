@@ -1,12 +1,24 @@
 /* ProfileView.css - Enhanced Professional Design */
 
+.profile-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #7c77b9 0%, #7f90c4 50%, #6d79b7 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* or center, if you want vertical centering */
+  padding: 2rem 0;
+}
+
 .profile-view {
-  max-width: 1400px;
+  max-width: 1230px;
+  width: 100%;
   margin: 0 auto;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
+  background: none;  /* Remove background gradient from here */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.54);
 }
 
 /* Loading States */
@@ -148,8 +160,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 25%, #06b6d4 50%, #10b981 75%, #f59e0b 100%);
+  height: 5px;
+  background: linear-gradient(90deg,#f2f1f6 0%, #14171b 50%, #faf8fe 100%);
 }
 
 .profile-header::after {
@@ -261,7 +273,7 @@
   color: #4b5563;
   margin: 0 0 2rem 0;
   line-height: 1.7;
-  max-width: 1000px;
+  max-width: 1200px;
   font-weight: 400;
 }
 
@@ -434,7 +446,7 @@
   color: #1d4ed8;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 600;
   border: 2px solid #bfdbfe;
   transition: all 0.3s ease;
@@ -549,10 +561,11 @@
 }
 
 .link-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
+  width: 24px;   /* adjust size */
+  height: 24px;
+  object-fit: contain;
 }
+
 
 .link-item:hover .link-icon {
   transform: scale(1.1);

@@ -5,9 +5,11 @@ import Navbar from './components/navbar/Navbar';
 import LandingPage from './components/landing/LandingPage';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Dashboard from './components/Dashboard';
+import Dashboard from './pages/Dashboard';
 import ProfileView from './components/profile/ProfileView';
 import ProfileEdit from './components/profile/ProfileEdit';
+import Messages from './pages/Messages';
+
 import './App.css';
 
 const AppContent: React.FC = () => {
@@ -79,7 +81,7 @@ const AppContent: React.FC = () => {
               
               <Route path="/search" element={<div>Search Page</div>} />
               <Route path="/opportunities" element={<div>Opportunities Page</div>} />
-              <Route path="/messages" element={<div>Messages Page</div>} />
+              <Route path="/messages" element={<Messages />} /> {/* FIXED: Use Messages component instead of div */}
               {/* Catch all for authenticated users */}
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </>

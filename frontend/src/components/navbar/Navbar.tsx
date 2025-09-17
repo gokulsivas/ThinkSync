@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
       <div className="navbar-container">
         {/* Far Left - Logo and Name */}
         <div className="navbar-left" onClick={handleLogoClick}>
-          <span className="brand-icon">🌐</span>
+          <span className="brand-icon">𖡎</span>
           <span className="brand-text">ThinkSync</span>
         </div>
 
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
               className={`nav-link ${isActive('/profile') ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">👤</span> Profile
+              <span className="nav-icon">𐀪</span> Profile
             </Link>
             
             <Link 
@@ -78,21 +78,21 @@ const Navbar: React.FC = () => {
               className={`nav-link ${isActive('/search') ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">🔍</span> Search
+              <span className="nav-icon">🔍︎</span> Search
             </Link>
             <Link 
               to="/opportunities" 
               className={`nav-link ${isActive('/opportunities') ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">🌟</span> Opportunities
+              <span className="nav-icon">💭</span> Opportunities
             </Link>
             <Link 
               to="/messages" 
               className={`nav-link ${isActive('/messages') ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">✉️</span> Messages
+              <span className="nav-icon">✉︎</span> Messages
             </Link>
           </div>
         )}
@@ -143,22 +143,22 @@ const Navbar: React.FC = () => {
                 className={`nav-link ${isActive('/profile') ? 'active' : ''}`} 
                 onClick={closeMenu}
               >
-                👤 Profile
+                𐀪 Profile
               </Link>
             </li>
             <li>
               <Link to="/search" className={`nav-link ${isActive('/search') ? 'active' : ''}`} onClick={closeMenu}>
-                🔍 Search
+                🔍︎ Search
               </Link>
             </li>
             <li>
               <Link to="/opportunities" className={`nav-link ${isActive('/opportunities') ? 'active' : ''}`} onClick={closeMenu}>
-                🌟 Opportunities
+                💭 Opportunities
               </Link>
             </li>
             <li>
               <Link to="/messages" className={`nav-link ${isActive('/messages') ? 'active' : ''}`} onClick={closeMenu}>
-                ✉️ Messages
+                ✉︎ Messages
               </Link>
             </li>
           </ul>

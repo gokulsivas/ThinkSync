@@ -1,5 +1,5 @@
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #050d31 0%, #48206f 100%);
   color: white;
   position: sticky;
   top: 0;
@@ -9,10 +9,10 @@
 }
 
 .navbar-container {
-  max-width: 1400px;
+  max-width: 1700px;
   margin: 0 auto;
   padding: 0 1rem; /* Reduced padding for more space */
-  height: 64px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,12 +33,12 @@
 }
 
 .brand-icon {
-  font-size: 32px;
-  margin-right: 5px;
+  font-size: 40px;
+  margin-right: 10px;
 }
 
 .brand-text {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: white;
@@ -62,7 +62,7 @@
   color: white;
   text-decoration: none;
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   border-radius: 25px;
   transition: all 0.3s ease;
@@ -103,7 +103,7 @@
   color: white;
   cursor: pointer;
   padding: 10px 18px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   transition: all 0.3s ease;
   letter-spacing: 0.3px;
@@ -120,8 +120,8 @@
 }
 
 .user-circle {
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   display: flex;
