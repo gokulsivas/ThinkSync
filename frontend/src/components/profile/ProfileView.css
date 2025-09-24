@@ -280,9 +280,9 @@
 /* Stats section */
 .profile-stats {
   display: flex;
-  gap: 1rem; /* reduced from 1.5rem */
+  gap: 1rem;
   margin-top: 1.5rem;
-  justify-content: left; /* ADD THIS - moves stats to the right */
+  justify-content: left;
 }
 
 .stat-item {
@@ -290,11 +290,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.5rem; /* reduced from 1.5rem 2rem */
+  padding: 1rem 1.5rem;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border: 2px solid #e2e8f0;
   border-radius: 20px;
-  min-width: 100px; /* reduced from 120px */
+  min-width: 100px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -323,13 +323,12 @@
 }
 
 .stat-value {
-  font-size: 1.5rem; /* reduced from 2rem */
+  font-size: 1.5rem;
   font-weight: 800;
   color: #1f2937;
   margin-bottom: 0.5rem;
   line-height: 1;
 }
-
 
 .stat-label {
   font-size: 0.8rem;
@@ -487,7 +486,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 0.8rem;
   background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
   border: 2px solid #fed7aa;
   border-radius: 16px;
@@ -497,8 +496,8 @@
 }
 
 .award-item::before {
-  content: '🏆';
-  font-size: 1.5rem;
+  content: '🎖';
+  font-size: 1.8rem;
   margin-right: 0.5rem;
 }
 
@@ -561,11 +560,10 @@
 }
 
 .link-icon {
-  width: 24px;   /* adjust size */
+  width: 24px;
   height: 24px;
   object-fit: contain;
 }
-
 
 .link-item:hover .link-icon {
   transform: scale(1.1);
@@ -615,6 +613,21 @@
   opacity: 0.5;
 }
 
+/* Private Account Message Box */
+.private-account-message {
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: #fee2e2;   /* Light red/pink background */
+  border: 2px solid #fca5a5;   /* Red border */
+  color: #b91c1c;              /* Dark red text */
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+  user-select: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .profile-view {
@@ -622,35 +635,28 @@
   }
 
   .profile-header {
-  background: white;
-  border-radius: 24px;
-  padding: 3rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: white;
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
 
-  /* NEW FLEX LAYOUT */
-  display: flex;
-  align-items: center;  /* vertical alignment */
-  gap: 2rem;            /* space between avatar and info */
-}
+  .profile-avatar {
+    margin-bottom: 0;
+    gap: 1.5rem;
+  }
 
-.profile-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 2rem;
-  gap: 1.5rem; /* this creates space automatically */
-  position: relative;
-}
-
-
-.profile-info {
-  flex: 1;              /* take up remaining space */
-}
+  .profile-info {
+    flex: 1;
+  }
 
   .profile-content {
     grid-template-columns: 1fr;
@@ -658,18 +664,9 @@
   }
 
   .profile-name {
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: #1f2937;
-  margin: 0 0 0.5rem 1.5rem; /* add left margin */
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
+    margin-left: 1.5rem;
+    font-size: 3.5rem;
+  }
 
   .avatar-placeholder {
     width: 120px;
@@ -682,11 +679,11 @@
     justify-content: right;
     gap: 1rem;
   }
-.stat-item {
-  min-width: 80px; /* reduced from 100px */
-  padding: 0.75rem 1rem; /* reduced from 1rem 1.5rem */
-}
 
+  .stat-item {
+    min-width: 80px;
+    padding: 0.75rem 1rem;
+  }
 
   .profile-actions {
     position: static;
@@ -737,15 +734,14 @@
     gap: 0.75rem;
   }
 
-.stat-item {
-  padding: 0.75rem; /* reduced from 1rem */
-  min-width: 70px; /* reduced from 80px */
-}
+  .stat-item {
+    padding: 0.75rem;
+    min-width: 70px;
+  }
 
-.stat-value {
-  font-size: 1.2rem; /* reduced from 1.5rem */
-}
-
+  .stat-value {
+    font-size: 1.2rem;
+  }
 
   .link-item,
   .award-item {
@@ -779,7 +775,7 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
   }
-  
+
   .content-section {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);

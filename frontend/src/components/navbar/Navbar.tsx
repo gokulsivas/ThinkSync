@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const { user, logout } = useAuth();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
     closeMenu();
   };
 
-  // ✅ Profile circle click handler
+  // Profile circle click handler
   const handleProfileClick = () => {
     console.log('👤 [NAVBAR] Profile circle clicked');
     navigate('/profile');
@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Far Left - Logo and Name */}
-        <div className="navbar-left" onClick={handleLogoClick}>
+        <div className="navbar-left" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
           <span className="brand-icon">𖡎</span>
           <span className="brand-text">ThinkSync</span>
         </div>
@@ -56,44 +56,77 @@ const Navbar: React.FC = () => {
         {/* Center - Navigation Links */}
         {user && (
           <div className="navbar-center">
-            <Link 
-              to="/dashboard" 
+            <Link
+              to="/dashboard"
               className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`}
               onClick={closeMenu}
             >
               <span className="nav-icon">⊞</span> Dashboard
             </Link>
-            
-            {/* ✅ Profile Button - Links to ProfileView */}
-            <Link 
-              to="/profile" 
+
+            <Link
+              to="/profile"
               className={`nav-link ${isActive('/profile') ? 'active' : ''}`}
               onClick={closeMenu}
             >
               <span className="nav-icon">𐀪</span> Profile
             </Link>
-            
-            <Link 
-              to="/search" 
+
+            <Link
+              to="/search"
               className={`nav-link ${isActive('/search') ? 'active' : ''}`}
               onClick={closeMenu}
             >
               <span className="nav-icon">🔍︎</span> Search
             </Link>
-            <Link 
-              to="/opportunities" 
+
+            <Link
+              to="/opportunities"
               className={`nav-link ${isActive('/opportunities') ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              <span className="nav-icon">💭</span> Opportunities
+              <span className="nav-icon">✈︎</span> Opportunities
             </Link>
-            <Link 
-              to="/messages" 
+
+            <Link
+              to="/messages"
               className={`nav-link ${isActive('/messages') ? 'active' : ''}`}
               onClick={closeMenu}
             >
               <span className="nav-icon">✉︎</span> Messages
             </Link>
+
+            {/* Admin-only Authorization link */}
+            {user?.role === 'admin' && (
+              <button
+                className="nav-btn authorization-btn"
+                onClick={() => {
+                  navigate('/authorization');
+                  closeMenu();
+                }}
+                style={{
+                  marginLeft: '12px',
+                  padding: '8px 14px',
+                  fontWeight: '600',
+                  fontSize: '14px',
+                  borderRadius: '8px',
+                  border: '1px solid #4a5568',
+                  cursor: 'pointer',
+                  backgroundColor: '#718096',
+                  color: 'white',
+                  transition: 'background-color 0.2s ease',
+                }}
+                onMouseEnter={e => {
+                  (e.target as HTMLButtonElement).style.backgroundColor = '#4a5568';
+                }}
+                onMouseLeave={e => {
+                  (e.target as HTMLButtonElement).style.backgroundColor = '#718096';
+                }}
+                type="button"
+              >
+                Authorization
+              </button>
+            )}
           </div>
         )}
 
@@ -103,10 +136,9 @@ const Navbar: React.FC = () => {
             <button className="logout-btn" onClick={handleLogout} title="Logout">
               Logout
             </button>
-            
-            {/* ✅ Profile Circle - Navigates to ProfileView */}
-            <div 
-              className="user-circle" 
+
+            <div
+              className="user-circle"
               onClick={handleProfileClick}
               title={`${user.name} - Click for profile`}
             >
@@ -125,22 +157,21 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu */}
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           {user && <div className="user-welcome">Welcome, {user.name}</div>}
-          
+
           <ul className="nav-links">
             <li>
-              <Link 
-                to="/dashboard" 
-                className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`} 
+              <Link
+                to="/dashboard"
+                className={`nav-link ${isActive('/dashboard') ? 'active' : ''}`}
                 onClick={closeMenu}
               >
                 ⊞ Dashboard
               </Link>
             </li>
             <li>
-              {/* ✅ Mobile Profile Link */}
-              <Link 
-                to="/profile" 
-                className={`nav-link ${isActive('/profile') ? 'active' : ''}`} 
+              <Link
+                to="/profile"
+                className={`nav-link ${isActive('/profile') ? 'active' : ''}`}
                 onClick={closeMenu}
               >
                 𐀪 Profile
@@ -161,8 +192,43 @@ const Navbar: React.FC = () => {
                 ✉︎ Messages
               </Link>
             </li>
+
+            {/* Admin Authorization link on mobile menu */}
+            {user?.role === 'admin' && (
+              <li>
+                <button
+                  className="nav-btn authorization-btn"
+                  onClick={() => {
+                    navigate('/authorization');
+                    closeMenu();
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '8px 12px',
+                    fontWeight: '600',
+                    fontSize: '14px',
+                    borderRadius: '8px',
+                    border: '1px solid #4a5568',
+                    cursor: 'pointer',
+                    backgroundColor: '#718096',
+                    color: 'white',
+                    marginTop: '8px',
+                    transition: 'background-color 0.2s ease',
+                  }}
+                  onMouseEnter={e => {
+                    (e.target as HTMLButtonElement).style.backgroundColor = '#4a5568';
+                  }}
+                  onMouseLeave={e => {
+                    (e.target as HTMLButtonElement).style.backgroundColor = '#718096';
+                  }}
+                  type="button"
+                >
+                  Authorization
+                </button>
+              </li>
+            )}
           </ul>
-          
+
           <button className="logout-btn mobile-logout" onClick={handleLogout}>
             Logout
           </button>

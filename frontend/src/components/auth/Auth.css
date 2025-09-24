@@ -47,6 +47,7 @@
   flex-direction: column;
 }
 
+/* Common form-group styles */
 .form-group {
   margin-bottom: 24px;
 }
@@ -59,7 +60,8 @@
   margin-bottom: 8px;
 }
 
-.form-group input {
+/* Style inputs except checkboxes */
+.form-group input:not([type="checkbox"]) {
   width: 100%;
   padding: 16px 20px;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -77,7 +79,7 @@
   font-style: italic;
 }
 
-.form-group input:focus {
+.form-group input:focus:not([type="checkbox"]) {
   outline: none;
   border-color: rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.15);
@@ -85,19 +87,14 @@
   transform: translateY(-2px);
 }
 
-/* Remember Me Container */
-.remember-me-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 20px 0 32px 0;
-  user-select: none;
-}
-
-.remember-me-checkbox {
+/* Checkbox specific styling for both adminLogin and rememberMe */
+.form-group input[type="checkbox"] {
+  /* Use same size and style for both checkboxes */
   appearance: none;
-  width: 18px;
-  height: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
   border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.1);
@@ -105,34 +102,56 @@
   position: relative;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.form-group.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
-.remember-me-checkbox:checked {
+.form-group input[type="checkbox"]:checked {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.8);
 }
 
-.remember-me-checkbox:checked::after {
+.form-group input[type="checkbox"]:checked::after {
   content: '✓';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
+  user-select: none;
 }
 
-.remember-me-label {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 15px;
+.form-group label {
+  display: inline-block;
   font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  transition: color 0.2s ease;
+  vertical-align: middle;
+  margin: 0;
 }
 
-.remember-me-label:hover {
-  color: white;
+/* Container to align checkbox and label side-by-side for admin login checkbox */
+.form-group.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Remember Me Container if separate */
+.remember-me-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 32px 0;
+  user-select: none;
 }
 
 /* Sign In Button */

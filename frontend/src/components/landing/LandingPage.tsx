@@ -7,7 +7,7 @@ const LandingPage: React.FC = () => {
     <div className="landing-container">
       <nav className="landing-navbar">
         <div className="navbar-brand">
-          <span className="brand-icon">(˶ᵔ ᵕ ᵔ˶)</span>
+          <span className="brand-icon">𖡎</span>
           <span className="brand-text">ThinkSync</span>
         </div>
         <div className="auth-buttons">
@@ -37,15 +37,15 @@ const LandingPage: React.FC = () => {
 
         <div className="features-section">
           <div className="feature">
-            <h3>🔬 Research Profiles</h3>
+            <h3>⚛︎ Research Profiles</h3>
             <p>Create detailed academic profiles showcasing your research, publications, and achievements.</p>
           </div>
           <div className="feature">
-            <h3>🤝 Collaboration</h3>
+            <h3>𖨆𖨆 Collaboration</h3>
             <p>Connect with researchers worldwide and discover new collaboration opportunities.</p>
           </div>
           <div className="feature">
-            <h3>💼 Opportunities</h3>
+            <h3>𖠩 Opportunities</h3>
             <p>Find jobs, grants, and research opportunities tailored to your expertise.</p>
           </div>
         </div>

@@ -78,9 +78,24 @@ CREATE TABLE audit_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE post_authorizations (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  type VARCHAR(20) NOT NULL, -- 'post' or 'comment'
+  content TEXT NOT NULL,
+  post_id INTEGER, -- nullable for comments linked to posts
+  status VARCHAR(20) DEFAULT 'pending', -- 'pending', 'approved', 'rejected'
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_post_authorizations_user_id ON post_authorizations(user_id);
+CREATE INDEX idx_post_authorizations_status ON post_authorizations(status);
+
 -- Indexes for performance
 CREATE INDEX idx_users_email ON users(email);
 CREATE INDEX idx_users_role ON users(role);
 CREATE INDEX idx_profiles_user_id ON researcher_profiles(user_id);
 CREATE INDEX idx_sessions_user_id ON user_sessions(user_id);
 CREATE INDEX idx_audit_logs_user_id ON audit_logs(user_id);
+

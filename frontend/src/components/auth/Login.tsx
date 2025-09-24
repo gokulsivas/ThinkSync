@@ -9,6 +9,7 @@ const Login: React.FC = () => {
     password: ''
   });
   const [rememberMe, setRememberMe] = useState(false);
+  const [isAdminLogin, setIsAdminLogin] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,6 +43,10 @@ const Login: React.FC = () => {
     setRememberMe(e.target.checked);
   };
 
+  const handleIsAdminChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsAdminLogin(e.target.checked);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -51,11 +56,12 @@ const Login: React.FC = () => {
 
     try {
       // 🎯 CRITICAL: Use your AuthContext login function
+      // Currently isAdminLogin flag is unused in backend but kept here for frontend potential use
       const success = await login(formData.email, formData.password);
 
       if (success) {
         console.log('✅ [LOGIN] Login successful!');
-        
+
         // Handle remember me functionality
         if (rememberMe) {
           localStorage.setItem('rememberedEmail', formData.email);
@@ -65,7 +71,7 @@ const Login: React.FC = () => {
 
         // 🚀 Navigation will be handled by useEffect when isAuthenticated changes
         console.log('🚀 [LOGIN] Authentication state updated, redirecting...');
-        
+
       } else {
         console.log('❌ [LOGIN] Login failed');
         setError('Invalid email or password. Please try again.');
@@ -89,7 +95,7 @@ const Login: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="auth-form">
             {error && <div className="error-message">{error}</div>}
-            
+
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
               <input
@@ -118,19 +124,20 @@ const Login: React.FC = () => {
               />
             </div>
 
-            {/* Remember Me Checkbox */}
-            <div className="remember-me-container">
-              <input
-                type="checkbox"
-                id="rememberMe"
-                checked={rememberMe}
-                onChange={handleRememberMeChange}
-                className="remember-me-checkbox"
-              />
-              <label htmlFor="rememberMe" className="remember-me-label">
-                Remember me
-              </label>
-            </div>
+
+{/* Remember Me Checkbox */}
+<div className="form-group row">
+  <input
+    type="checkbox"
+    id="rememberMe"
+    checked={rememberMe}
+    onChange={handleRememberMeChange}
+    className="remember-me-checkbox"
+  />
+  <label htmlFor="rememberMe" style={{ marginBottom: 0, fontWeight: 500 }}>Remember Me</label>
+</div>
+
+
 
             <button 
               type="submit" 

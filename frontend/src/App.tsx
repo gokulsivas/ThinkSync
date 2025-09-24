@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import Navbar from './components/navbar/Navbar';
 import LandingPage from './components/landing/LandingPage';
 import Login from './components/auth/Login';
@@ -9,13 +9,16 @@ import Dashboard from './pages/Dashboard';
 import ProfileView from './components/profile/ProfileView';
 import ProfileEdit from './components/profile/ProfileEdit';
 import Messages from './pages/Messages';
+import SearchFilter from './pages/SearchFilter';
+import AuthorizationPage from './pages/AuthorizationPage';
 
 import './App.css';
+
+import { useAuth } from './hooks/useAuth';
 
 const AppContent: React.FC = () => {
   const { isAuthenticated, isLoading, user } = useAuth();
 
-  // Force re-render when user changes
   React.useEffect(() => {
     console.log('🔄 [APP] Auth state changed:', { isAuthenticated, user: !!user });
   }, [isAuthenticated, user]);
@@ -49,47 +52,37 @@ const AppContent: React.FC = () => {
     );
   }
 
+
   return (
     <div className="App">
-      {/* Only show navbar for authenticated users */}
       {isAuthenticated && <Navbar />}
-      
-      <main className={isAuthenticated ? "main-content" : ""}>
+
+      <main className={isAuthenticated ? "main-content app-main-background" : ""}>
         <Routes>
-          {/* Public Routes */}
-          <Route 
-            path="/login" 
-            element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />} 
+          <Route
+            path="/login"
+            element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />}
           />
-          <Route 
-            path="/register" 
-            element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Register />} 
+          <Route
+            path="/register"
+            element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Register />}
           />
-          
-          {/* Conditional Routing based on Authentication */}
+
           {isAuthenticated ? (
             <>
-              {/* Protected Routes */}
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              
-              {/* Profile View - No props needed, fetches its own data */}
               <Route path="/profile" element={<ProfileView />} />
-              
-              {/* Profile Edit - No props needed, handles its own state */}
               <Route path="/profile/edit" element={<ProfileEdit />} />
-              
-              <Route path="/search" element={<div>Search Page</div>} />
+              <Route path="/search" element={<SearchFilter />} />
               <Route path="/opportunities" element={<div>Opportunities Page</div>} />
-              <Route path="/messages" element={<Messages />} /> {/* FIXED: Use Messages component instead of div */}
-              {/* Catch all for authenticated users */}
+              <Route path="/messages" element={<Messages />} />
+              <Route path="/authorization" element={<AuthorizationPage />} />
               <Route path="*" element={<Navigate to="/dashboard" replace />} />
             </>
           ) : (
             <>
-              {/* Unauthenticated Routes */}
               <Route path="/" element={<LandingPage />} />
-              {/* Catch all for unauthenticated users */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </>
           )}

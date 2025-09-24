@@ -1,3 +1,5 @@
+// PATH: src/contexts/AuthContext.tsx
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface User {
@@ -11,13 +13,15 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
+  token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<boolean>;
-  logout: () => void; // ✅ Make sure logout is in the interface
+  logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+// Explicitly export AuthContext for imports in other files
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -29,23 +33,25 @@ export const useAuth = () => {
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Check for existing auth on mount
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
+    const savedToken = localStorage.getItem('access_token');
     const userData = localStorage.getItem('user');
 
-    if (token && userData) {
+    if (savedToken && userData) {
       try {
+        setToken(savedToken);
         setUser(JSON.parse(userData));
       } catch (error) {
         console.error('Error parsing user data:', error);
         localStorage.removeItem('access_token');
         localStorage.removeItem('user');
+        setToken(null);
+        setUser(null);
       }
     }
-    
     setIsLoading(false);
   }, []);
 
@@ -54,25 +60,27 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const response = await fetch('http://localhost:8000/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('access_token', data.access_token);
-        
-        // ✅ Structure user data properly before storing and setting
+        setToken(data.access_token);
+
         const userData = {
-          id: data.user.id,           // now the UUID returned by backend
+          id: data.user.id,
           email: data.user.email,
           name: data.user.name,
           title: data.user.title,
           affiliation: data.user.affiliation,
-          role: data.user.role
+          role: data.user.role,
         };
-        
+
         localStorage.setItem('user', JSON.stringify(userData));
         setUser(userData);
+        console.log('Logged in user:', userData);
+
         return true;
       }
       return false;
@@ -82,32 +90,27 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  // ✅ Proper logout function
   const logout = () => {
     console.log('🚪 [AUTH] Logging out user');
-    
-    // Clear all localStorage
+
     localStorage.removeItem('access_token');
     localStorage.removeItem('user');
     localStorage.removeItem('rememberedEmail');
-    
-    // Clear user state
+
     setUser(null);
-    
+    setToken(null);
+
     console.log('✅ [AUTH] Logout complete');
   };
 
   const value: AuthContextType = {
     user,
-    isAuthenticated: !!user,
+    token,
+    isAuthenticated: !!token,
     isLoading,
     login,
-    logout // ✅ Include logout in context value
+    logout,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
